@@ -1,0 +1,50 @@
+﻿<Window x:Class="MindMapTest.MainWindow"
+        x:Name="this"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MindMapTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <TextBlock Text="Center node"/>
+                <TextBox x:Name="centerNode" Text="{Binding ElementName=this, Path=centerNodeContent, Mode=TwoWay}"/>
+
+                <TextBlock Text="Child Node" Margin="0,10,0,0"/>
+                <DockPanel x:Name="DockPanel1">
+                    <TextBox DockPanel.Dock="Left" x:Name="childNode" Text="{Binding ElementName=this, Path=childNodeContent, Mode=TwoWay}" MinWidth="450"/>
+                    <Button DockPanel.Dock="Right" x:Name="addChildModeButton" Content="Add Child" Click="addChildModeButton_Click"/>
+                </DockPanel>
+
+                <TextBlock Text="Choose application to open MindMap" TextDecorations="Underline" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0">
+                    <Button Content="ClaroIdeas" Margin="0,0,5,0" Click="ClaroIdeas_Click"/>
+                    <Button Content="MindView" Margin="0,0,5,0" Click="MindView_Click"/>
+                    <Button Content="Inspiration" Margin="0,0,5,0" Click="Inspiration_Click"/>
+                    <Button Content="Ideamapper" Margin="0,0,5,0" Click="Ideamapper_Click"/>
+                    <Button Content="Xmind" Margin="0,0,5,0" Click="Xmind_Click"/>
+                    <Button Content="MindMaster/Freemind" Margin="0,0,5,0" Click="Freemind_Click"/>
+                    <Button Content="MindManager" Margin="0,0,5,0" Click="MindManager_Click"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Margin="20,0,0,0">
+                <TextBlock Text="Child Nodes" TextDecorations="Underline" Margin="0,0,0,10"/>
+                <ListBox x:Name="childNodeList" ItemsSource="{Binding ElementName=this, Path=childNodes, UpdateSourceTrigger=PropertyChanged}" MinWidth="100" Height="300">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding BindsDirectlyToSource=True}" />
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Button x:Name="deleteNodeButton" Content="Remove Selected Node" Click="deleteNodeButton_Click" Margin="0,10,0,0"/>
+            </StackPanel>
+        </StackPanel>
+
+    </Grid>
+</Window>
