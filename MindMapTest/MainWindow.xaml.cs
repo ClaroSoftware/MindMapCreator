@@ -20,6 +20,12 @@ using System.Windows.Navigation;
 using System.Xaml;
 using System.Xml;
 
+/*
+    This code is part of MindMapCreator, https://github.com/ClaroSoftware/MindMapCreator.
+    It is copyright Claro Software Ltd., and released under the GNU Public Licence V3. 
+    10 Feb 2021
+*/
+
 namespace MindMapTest
 {
     /// <summary>
